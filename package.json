@@ -1,0 +1,26 @@
+{
+  "name": "pro1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "good": "^8.1.2",
+    "good-console": "^8.0.0",
+    "good-file": "^6.0.1",
+    "good-squeeze": "^5.1.0",
+    "hapi": "^18.1.0",
+    "hapi-router": "^4.0.0",
+    "hapi-swagger": "^9.3.1",
+    "inert": "^5.1.2",
+    "joi": "^14.3.1",
+    "mysql2": "^1.6.5",
+    "require-directory": "^2.1.1",
+    "sequelize": "^4.42.1",
+    "vision": "^5.4.4"
+  }
+}
