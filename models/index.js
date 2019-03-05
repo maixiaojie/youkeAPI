@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const config = require('../config/database')
 const fs = require('fs')
 const path = require('path')
+const Op = Sequelize.Op
 let db = {}
 const sequelize = new Sequelize(config.database, config.username, config.password, {
 	host: config.host,
@@ -25,5 +26,6 @@ fs.readdirSync(__dirname).filter((file) => {
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
+db.Op = Op;
 
 module.exports = db;

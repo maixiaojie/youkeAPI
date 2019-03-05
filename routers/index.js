@@ -1,7 +1,6 @@
 let controller = require('../controllers')
 const Joi = require('joi')
 
-console.log(controller)
 module.exports = [
 {
 	path: '/p',

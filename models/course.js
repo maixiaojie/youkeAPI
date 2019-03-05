@@ -4,7 +4,9 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			primaryKey: true
 		},
-		course_name: DataTypes.STRING
+		course_name: DataTypes.STRING,
+		img: DataTypes.STRING,
+		learning_time: DataTypes.STRING
 	}, {
 		freezeTableName: true,
 		timestamps: false
