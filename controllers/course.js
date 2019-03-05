@@ -1,5 +1,4 @@
 let models = require('../models');
-
 const Op = models.Op;
 let course = {
 	async getOne(req) {
@@ -53,6 +52,23 @@ let course = {
 			}
 		}
 		
+	},
+	async getLessonList(req) {
+		let courseid = req.params.courseid;
+		let courseIntroduceData = await models.course_introduce.findOne({
+			where: {
+				course_id: courseid
+			}
+		});
+		let a = await models.sequelize.query(`select * from lesson where course_id='${courseid}' left join lesson_detail where lesson.lesson_id = lesson_detail.lesson_id group by lesson.lesson_id`)
+		return {
+			code: 1,
+			data: {
+				courseIntroduceData,
+				a
+			},
+			msg: '查询成功'
+		}
 	}
 }
 
