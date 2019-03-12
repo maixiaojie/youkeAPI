@@ -55,17 +55,13 @@ let course = {
 	},
 	async getLessonList(req) {
 		let courseid = req.params.courseid;
-		let courseIntroduceData = await models.course_introduce.findOne({
-			where: {
-				course_id: courseid
-			}
-		});
-		let a = await models.sequelize.query(`select * from lesson where course_id='${courseid}' left join lesson_detail where lesson.lesson_id = lesson_detail.lesson_id group by lesson.lesson_id`)
+		let courseIntroduceData = await models.sequelize.query(` select * from course_introduce RIGHT JOIN course on course.id = course_introduce.course_id  where course_introduce.course_id = '${courseid}' GROUP BY course.id `);
+		let lessonData = await models.sequelize.query(`select * from lesson left join lesson_detail on lesson.lesson_id = lesson_detail.lesson_id  where course_id='${courseid}'`)
 		return {
 			code: 1,
 			data: {
-				courseIntroduceData,
-				a
+				courseIntroduceData: courseIntroduceData[0],
+				lessonData: lessonData[0]
 			},
 			msg: '查询成功'
 		}
