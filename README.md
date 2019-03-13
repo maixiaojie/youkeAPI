@@ -4,6 +4,31 @@
 
 `npm run start`
 
+## 热部署
+
+本地开发使用`supervisor`来进行热部署
+
+`npm install supervisor -g`
+
+`npm run dev`
+
+线上使用`pm2`来进行部署
+
+`npm install pm2 -g`
+
+`npm run pm2`
+
+第二次部署的时候使用下面的脚本
+
+`. restart.sh`
+
+改脚本会进行一下操作：
+
+- 从 Git 服务器上pull代码
+
+- 通过 pm2 的命令重启应用
+
+
 
 ## 接口说明
 
