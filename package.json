@@ -1,11 +1,12 @@
 {
-  "name": "pro1",
+  "name": "youkeApi",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "dev": "supervisor index.js"
+    "dev": "supervisor index.js",
+    "pm2":"pm2 start processes.json"
   },
   "author": "",
   "license": "ISC",
