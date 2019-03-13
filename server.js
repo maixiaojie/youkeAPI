@@ -1,7 +1,7 @@
 const Hapi = require('hapi');
 
 let connnectionOptions = {
-	port: 3333,
+	port: 7777,
 	host: 'localhost'
 };
 

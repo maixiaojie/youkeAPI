@@ -56,7 +56,7 @@ let course = {
 	async getLessonList(req) {
 		let courseid = req.params.courseid;
 		let courseIntroduceData = await models.sequelize.query(` select * from course_introduce RIGHT JOIN course on course.id = course_introduce.course_id  where course_introduce.course_id = '${courseid}' GROUP BY course.id `);
-		let lessonData = await models.sequelize.query(`select * from lesson left join lesson_detail on lesson.lesson_id = lesson_detail.lesson_id  where course_id='${courseid}'`)
+		let lessonData = await models.sequelize.query(`select * from lesson left join lesson_detail on lesson.lesson_id = lesson_detail.lesson_id  where course_id='${courseid}' group by lesson.lesson_id`)
 		return {
 			code: 1,
 			data: {
