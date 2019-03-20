@@ -9,7 +9,7 @@ let course = {
 		});
 		return {data: info}
 	},
-	async getList(req) {
+	async search(req) {
 		var pageSize = parseInt(req.params.pageSize) || 1;
 		var pageNum = parseInt(req.params.pageNum) || 10;
 		var keyword = req.query.keyword;
@@ -38,15 +38,9 @@ let course = {
 				msg: '查询成功'
 			}
 		}else {
-			let data = await models.course.findAll({
-				limit: pageSize,
-				offset: (pageNum - 1) * pageSize,
-				order: [
-					['id', 'DESC']
-				]
-			});
+			let data = [];
 			return {
-				code: 1,
+				code: 0,
 				data,
 				msg: '查询成功'
 			}
@@ -63,6 +57,43 @@ let course = {
 				courseIntroduceData: courseIntroduceData[0],
 				lessonData: lessonData[0]
 			},
+			msg: '查询成功'
+		}
+	},
+	/**
+	 * 根据课程类型  查询当前类别下的课程
+	 * 前端 - web
+	 * 运维 - oam
+	 * 网络运营 - op
+	 * 产品经理 - pm
+	 * IOS - ios
+	 * Android - android
+	 * python - python
+	 * PHP - php
+	 * 嵌入式 - qrsqd
+	 * 物联网 - iot
+	 * 平面设计 - gd
+	 * UI设计 - ui
+	 * 软件测试 - te (无数据)
+	 * 全部 - all
+	 * 
+	 * @param {*} req 
+	 */
+	async getCourseInfo(req) {
+		let type = req.query.type;
+		let pagenum = req.params.pageNum;
+		let pagesize = req.params.pageSize;
+		let num = (pagenum - 1 ) * pagesize;
+		let courseData = [];
+		if(type == 'all') {
+			courseData = await models.sequelize.query(`select * from course order by id DESC limit ${pagesize} offset ${num} `);
+		}
+		else {
+			courseData = await models.sequelize.query(`select * from course where course_type_name = '${type}' order by id DESC limit ${pagesize} offset ${num} `)
+		}
+		return {
+			code: 1,
+			data: courseData[0],
 			msg: '查询成功'
 		}
 	}

@@ -48,22 +48,30 @@
         </tr>
         <tr>
             <th>1</th>
-            <th>/course/getList/{pageNum}/{pageSize}?keyword=${keyword}</th>
+            <th>/course/search/{pageNum}/{pageSize}?keyword=${keyword}</th>
             <th>get</th>
             <th>分页获取课程列表</th>
-            <th>keyword(可选参数) 不为空则为搜索</th>
-            <th><a href="https://api.mcust.cn/course/getList/1/5?keyword=python">获取python相关的课程</a></th>
+            <th>keyword - 关键词</th>
+            <th><a href="https://api.mcust.cn/course/search/1/5?keyword=python">获取python相关的课程</a></th>
         </tr>
         <tr>
             <th>2</th>
+            <th>/course/getCourseList/{pageNum}/{pageSize}?type=${type}</th>
+            <th>get</th>
+            <th>根据分类获取课程信息</th>
+            <th>type - 分类</th>
+            <th><a href="https://api.mcust.cn/course/getCourseList/1/5?type=python">获取类别为python的课程</a></th>
+        </tr>
+        <tr>
+            <th>3</th>
             <th>/course/getLessonList/{courseid}</th>
             <th>get</th>
-            <th>获取课程详细数据</th>
+            <th>获取课程详细信息</th>
             <th></th>
             <th><a href="https://api.mcust.cn/course/getLessonList/395">获取id为395的课程详情</a></th>
         </tr>
         <tr>
-            <th>3</th>
+            <th>4</th>
             <th>/praise?uid=${uid}&tid=${tid}&ct=${ct}</th>
             <th>get</th>
             <th>点赞/取消点赞</th>
@@ -71,7 +79,7 @@
             <th><a href="https://api.mcust.cn/praise?uid=1&tid=1&ct=2">uid为1的用户给id为1的文章点赞或者取消点赞</a></th>
         </tr>
         <tr>
-            <th>3</th>
+            <th>5</th>
             <th>/collection?uid=${uid}&tid=${tid}&ct=${ct}</th>
             <th>get</th>
             <th>收藏/取消收藏</th>
