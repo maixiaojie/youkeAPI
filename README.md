@@ -70,4 +70,12 @@
             <th>uid [用户id]  tid [文章或者视频的id]  ct [content_type 1-视频 2-文章]</th>
             <th><a href="https://api.mcust.cn/praise?uid=1&tid=1&ct=2">uid为1的用户给id为1的文章点赞或者取消点赞</a></th>
         </tr>
+        <tr>
+            <th>3</th>
+            <th>/collection?uid=${uid}&tid=${tid}&ct=${ct}</th>
+            <th>get</th>
+            <th>收藏/取消收藏</th>
+            <th>uid [用户id]  tid [文章或者视频的id]  ct [content_type 1-视频 2-文章]</th>
+            <th><a href="https://api.mcust.cn/collection?uid=1&tid=1&ct=2">uid为1的用户收藏/取消收藏id为1的文章</a></th>
+        </tr>
     </table>

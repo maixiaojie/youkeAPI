@@ -32,5 +32,22 @@ module.exports = [
 			}
 		},
 		handler: controller.operation.praise
+	}, {
+		path: '/collection',
+		method: 'GET',
+		config: {
+			description: '收藏/取消收藏文章或者视频',
+			notes: 'collection',
+			tags: ['api'],
+			validate: {
+				query: {
+					uid: Joi.string().min(1).max(64).required(),
+					tid: Joi.string().min(1).max(64).required(),
+					ct: Joi.string().min(1).max(2).required()
+				}
+			}
+		},
+		handler: controller.operation.collection
 	}
+
 ]
