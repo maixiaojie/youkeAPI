@@ -3,6 +3,10 @@ let common = require('../common/common')
 const Op = models.Op;
 
 let operation = {
+    //'https://api.weixin.qq.com/sns/jscode2session?appid=wx475323d626427033&secret=bfe85d14e4a01fe3d26dd340f51edfc3&js_code=' + code + '&grant_type=authorization_code'
+    login(req) {
+
+    },
     /**
      * 点赞/取消点赞
      * @param {*} req 
