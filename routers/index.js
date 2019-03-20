@@ -26,7 +26,8 @@ module.exports = [
 			validate: {
 				query: {
 					uid: Joi.string().min(1).max(64).required(),
-					tid: Joi.string().min(1).max(64).required()
+					tid: Joi.string().min(1).max(64).required(),
+					ct: Joi.string().min(1).max(2).required()
 				}
 			}
 		},
