@@ -50,7 +50,7 @@ module.exports = [
 		handler: controller.operation.collection
 	}, {
         path: '/login',
-        methods:  'POST',
+        method:  'POST',
         config: {
             description: '小程序登录',
             notes: 'login api',

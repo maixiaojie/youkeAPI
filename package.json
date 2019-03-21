@@ -6,11 +6,12 @@
   "scripts": {
     "start": "node index",
     "dev": "supervisor index.js",
-    "pm2":"pm2 start processes.json"
+    "pm2": "pm2 start processes.json"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "crypto-js": "^3.1.9-1",
     "good": "^8.1.2",
     "good-console": "^8.0.0",
     "good-file": "^6.0.1",
@@ -23,6 +24,7 @@
     "mysql2": "^1.6.5",
     "require-directory": "^2.1.1",
     "sequelize": "^4.42.1",
-    "vision": "^5.4.4"
+    "vision": "^5.4.4",
+    "wreck": "^14.2.0"
   }
 }

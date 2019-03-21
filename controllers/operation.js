@@ -1,11 +1,91 @@
 let models = require('../models');
 let common = require('../common/common')
+let WXBizDataCrypt = require('../common/WXBizDataCrypt')
+const Wreck = require('wreck')
+const CryptoJS = require('crypto-js')
 const Op = models.Op;
 
 let operation = {
-    //'https://api.weixin.qq.com/sns/jscode2session?appid=wx475323d626427033&secret=bfe85d14e4a01fe3d26dd340f51edfc3&js_code=' + code + '&grant_type=authorization_code'
-    login(req) {
-
+    // 用户登录
+    async login(req) {
+        let appId = 'wx475323d626427033';
+        let appSecret = 'bfe85d14e4a01fe3d26dd340f51edfc3'
+        let body = req.payload;
+        let encryptedData = body.encryptedData;
+        let iv = body.iv;
+        let signature = body.signature;
+        let rawData = body.rawData;
+        let code = body.code;
+        let url = `https://api.weixin.qq.com/sns/jscode2session?appid=${appId}&secret=${appSecret}&js_code=${code}&grant_type=authorization_code`;
+        const {res, payload} = await Wreck.get(url);
+        let wxrs = JSON.parse(payload.toString());
+        if(wxrs && wxrs.session_key) {
+            let session_key = wxrs.session_key;
+            let openid = wxrs.openid;
+            // 校验数据是否合法，比较两个sign是否一致
+            // var sign2 = CryptoJS.HmacSHA1(rawData, session_key).toString()
+            // console.log(signature, sign2)
+            var pc = new WXBizDataCrypt(appId, session_key)
+            var data = pc.decryptData(encryptedData, iv)
+            let userinfo = await models.user.findOne({
+                where: {
+                    openid
+                }
+            });
+            console.log(userinfo)
+            if(userinfo) {
+                // update this record
+                let updateRs = await models.user.update({                    
+                    avatar_url: data.avatarUrl,
+                    nick_name: data.nickName,
+                    city: data.city,
+                    country: data.country,
+                    province: data.province,
+                    language: data.language,
+                    gender: data.gender
+                }, {
+                    where: {
+                        openid
+                    }
+                });
+                return {
+                    code: 1,
+                    data: {
+                        userid: userinfo.id
+                    },
+                    msg: '登录成功'
+                }
+            }else {
+                // add a new record
+                let uuid = 'user' + common.uuid(60);
+                let createRs = await models.user.create({
+                    id: uuid,
+                    openid,
+                    avatar_url: data.avatarUrl,
+                    nick_name: data.nickName,
+                    city: data.city,
+                    country: data.country,
+                    province: data.province,
+                    language: data.language,
+                    gender: data.gender,
+                    ctime: new Date().getTime()
+                });
+                return {
+                    code: 1,
+                    data: {
+                        userid: createRs.id
+                    },
+                    msg: '登录成功'
+                }
+            }
+            
+        }else {
+            return {
+                code: 0,
+                data: null,
+                msg: '登录失败，请重试'
+            }
+        }
     },
     /**
      * 点赞/取消点赞
