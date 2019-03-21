@@ -32,7 +32,6 @@ let operation = {
                     openid
                 }
             });
-            console.log(userinfo)
             if(userinfo) {
                 // update this record
                 let updateRs = await models.user.update({                    
