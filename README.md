@@ -86,4 +86,20 @@
             <th>uid [用户id]  tid [文章或者视频的id]  ct [content_type 1-视频 2-文章]</th>
             <th><a href="https://api.mcust.cn/collection?uid=1&tid=1&ct=2">uid为1的用户收藏/取消收藏id为1的文章</a></th>
         </tr>
+        <tr>
+            <th>6</th>
+            <th>/article/list/{pageNum}/{pageSize}?type=${type}</th>
+            <th>get</th>
+            <th>分页获取文章列表</th>
+            <th>pageNum 页数  pageSize 条数  type 类型[web/java/python]</th>
+            <th><a href="https://api.mcust.cn/article/detail/1">获取文章id为1的详细信息</a></th>
+        </tr>
+        <tr>
+            <th>7</th>
+            <th>/article/detail/{id}</th>
+            <th>get</th>
+            <th>获取文章详情</th>
+            <th>id 文章id</th>
+            <th><a href="https://api.mcust.cn/article/list/1/10?type=web">获取10条type为web的文章列表</a></th>
+        </tr>
     </table>
