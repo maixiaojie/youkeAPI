@@ -17,6 +17,7 @@
     "good-file": "^6.0.1",
     "good-squeeze": "^5.1.0",
     "hapi": "^18.1.0",
+    "hapi-cron": "^1.0.5",
     "hapi-router": "^4.0.0",
     "hapi-swagger": "^9.3.1",
     "inert": "^5.1.2",

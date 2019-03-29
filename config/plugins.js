@@ -31,6 +31,21 @@ const swaggerOptions = {
 		version: '0.0.1'
 	}
 }
+
+const cronOptions = {
+    jobs: [{
+        name: 'spider_articles',
+        time: '0 0 6,11,16,23 * * *',
+        timezone: 'Asia/Shanghai',
+        request: {
+            method: 'GET',
+            url: '/spider_articles'
+        },
+        onComplete: (res) => {
+            console.log(res)
+        }
+    }]
+}
 module.exports = [
 	{
 		plugin: require('good'),
@@ -51,5 +66,9 @@ module.exports = [
 	{
 		plugin: require('hapi-swagger'),
 		options: swaggerOptions
-	}
+    },
+    {
+        plugin: require('hapi-cron'),
+        options: cronOptions
+    }
 ]
