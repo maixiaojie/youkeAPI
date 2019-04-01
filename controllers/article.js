@@ -12,7 +12,8 @@ let article = {
                 f_type: type
             },
             order: [
-                [sequelize.fn('date', sequelize.col('time')), 'desc']
+                [sequelize.fn('date', sequelize.col('time')), 'desc'],
+                ['href', 'desc']
             ],
             limit: pageSize,
             offset: (pageNum - 1) * pageSize
