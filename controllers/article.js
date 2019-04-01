@@ -1,6 +1,6 @@
 let models = require('../models');
 const Op = models.Op;
-
+const sequelize = models.sequelize;
 let article = {
     async listByType(req) {
         let type = req.query.type;
@@ -11,6 +11,9 @@ let article = {
             where: {
                 f_type: type
             },
+            order: [
+                [sequelize.fn('date', sequelize.col('time')), 'desc']
+            ],
             limit: pageSize,
             offset: (pageNum - 1) * pageSize
         })
