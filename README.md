@@ -50,7 +50,7 @@
             <th>1</th>
             <th>/course/search/{pageNum}/{pageSize}?keyword=${keyword}</th>
             <th>get</th>
-            <th>分页获取课程列表</th>
+            <th>搜索 - 分页获取课程列表</th>
             <th>keyword - 关键词</th>
             <th><a href="https://api.mcust.cn/course/search/1/5?keyword=python">获取python相关的课程</a></th>
         </tr>
@@ -101,5 +101,13 @@
             <th>获取文章详情</th>
             <th>id 文章id</th>
             <th><a href="https://api.mcust.cn/article/list/1/10?type=web">获取10条type为web的文章列表</a></th>
+        </tr>
+        <tr>
+            <th>8</th>
+            <th>/article/search/{pageNum}/{pageSize}?keyword=${keyword}</th>
+            <th>get</th>
+            <th>搜索 - 分页获取文章列表</th>
+            <th>keyword - 关键词</th>
+            <th><a href="https://api.mcust.cn/article/search/1/5?keyword=python">获取python相关的文章</a></th>
         </tr>
     </table>
