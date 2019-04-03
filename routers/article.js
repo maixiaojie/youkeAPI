@@ -28,5 +28,19 @@ module.exports = [
             }
         },
         handler: controller.article.detail
-    },
+    },{
+        path: '/article/search/{pageNum}/{pageSize}',
+        method: 'GET',
+        config: {
+            description: "根据关键字搜索",
+            notes: 'article srarch',
+            tags: ['article'],
+            validate: {
+                query: {
+                    keyword: Joi.string().required()
+                }
+            }
+        },
+        handler: controller.article.search
+    }
 ]
