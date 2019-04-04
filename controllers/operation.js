@@ -216,7 +216,7 @@ let operation = {
         let uuid = 'search' + common.uuid(58);
         let cerateRs = await models.user_search_record.create({
             id: uuid,
-            uid: userid,
+            user_id: userid,
             keyword,
             ctime: new Date().getTime()
         });

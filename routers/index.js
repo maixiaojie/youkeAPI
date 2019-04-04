@@ -66,7 +66,8 @@ module.exports = [
 			tags: ['search'],
 			validate: {
 				query: {
-					keyword: Joi.string().required()
+					keyword: Joi.string().required(),
+					userid: Joi.string()
 				}
 			},
 			handler: controller.operation.user_search_record
