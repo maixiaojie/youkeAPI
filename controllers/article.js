@@ -1,4 +1,5 @@
 let models = require('../models');
+let common = require('../common/common')
 const Op = models.Op;
 const sequelize = models.sequelize;
 let article = {
@@ -29,6 +30,7 @@ let article = {
         let keyword = req.query.keyword;
         var pageSize = parseInt(req.params.pageSize) || 1;
         var pageNum = parseInt(req.params.pageNum) || 10;
+        
         let rs = await models.article.findAll({
             attributes: ['id', 'title', 'f_type', 's_type', 'time'],
             where: {

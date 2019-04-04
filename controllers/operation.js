@@ -209,6 +209,22 @@ let operation = {
 				msg: '收藏成功'
 			}
         }
+    },
+    async user_search_record(req) {        
+        let userid = req.query.userid;
+        let keyword = req.query.keyword;
+        let uuid = 'search' + common.uuid(58);
+        let cerateRs = await models.user_search_record.create({
+            id: uuid,
+            uid: userid,
+            keyword,
+            ctime: new Date().getTime()
+        });
+        return {
+            code: 1,
+            data: cerateRs,
+            msg: '创建成功'
+        }
     }
 }
 

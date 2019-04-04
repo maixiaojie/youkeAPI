@@ -110,4 +110,12 @@
             <th>keyword - 关键词</th>
             <th><a href="https://api.mcust.cn/article/search/1/5?keyword=python">获取python相关的文章</a></th>
         </tr>
+        <tr>
+            <th>9</th>
+            <th>/user_search_record?keyword=${keyword}&userid=${userid}</th>
+            <th>get</th>
+            <th>创建用户搜索记录</th>
+            <th>keyword - 关键词  userid - 用户id</th>
+            <th><a href="https://api.mcust.cn/user_search_record?keyword=python">创建用户搜索记录</a></th>
+        </tr>
     </table>

@@ -57,6 +57,20 @@ module.exports = [
             tags: ['login']
         },
         handler: controller.operation.login
-    }
+    }, {
+		path: '/user_search_record',
+		method: 'GET',
+		config: {
+			description: '用户搜索记录',
+			notes: 'user_search',
+			tags: ['search'],
+			validate: {
+				query: {
+					keyword: Joi.string().required()
+				}
+			},
+			handler: controller.operation.user_search_record
+		}
+	}
 
 ]
