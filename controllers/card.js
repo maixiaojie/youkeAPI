@@ -7,11 +7,13 @@ let card = {
         var pageSize = parseInt(req.params.pageSize) || 1;
         var pageNum = parseInt(req.params.pageNum) || 10;
         var sql = `SELECT card.*, u.nick_name, u.avatar_url from card INNER JOIN user as u on card.uid = u.id where card.open = '1'  ORDER BY card.ctime DESC limit ${pageSize} offset ${(pageNum - 1) * pageSize}` ;
-        let data = await sequelize.query(sql, {raw: false});
-        console.log(data)
+        let data = await sequelize.query(sql, {raw: false, type: sequelize.QueryTypes.SELECT});
+        var totalSql = `SELECT count(cardid) as total FROM card where card.open = '1'`;
+        let total = await sequelize.query(totalSql, {raw: false, type: sequelize.QueryTypes.SELECT});
         return {
             code: 1,
             data: data,
+            total,
             msg: '查询成功'
         }
     },
