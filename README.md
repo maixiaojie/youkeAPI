@@ -118,4 +118,36 @@
             <th>keyword - 关键词  userid - 用户id</th>
             <th><a href="https://api.mcust.cn/user_search_record?keyword=python">创建用户搜索记录</a></th>
         </tr>
+        <tr>
+            <th>10</th>
+            <th>/card/add</th>
+            <th>post</th>
+            <th>打卡</th>
+            <th>{title, content, open, uid}</th>
+            <th><a href="https://api.mcust.cn/card/add">每日打卡</a></th>
+        </tr>
+        <tr>
+            <th>11</th>
+            <th>/card/list/{pageNum}/{pageSize}</th>
+            <th>get</th>
+            <th>某个用户的打卡列表</th>
+            <th>uid</th>
+            <th><a href="https://api.mcust.cn/card/list/1/5?uid=1">打卡列表</a></th>
+        </tr>
+        <tr>
+            <th>12</th>
+            <th>/card/status</th>
+            <th>get</th>
+            <th>某个用户当天的打卡状态</th>
+            <th>uid</th>
+            <th><a href="https://api.mcust.cn/card/status?uid=1">打卡状态</a></th>
+        </tr>
+        <tr>
+            <th>13</th>
+            <th>/card/todaytotal</th>
+            <th>get</th>
+            <th>获取当天打卡总人数</th>
+            <th></th>
+            <th><a href="https://api.mcust.cn/card/todaytotal">打卡总人数</a></th>
+        </tr>
     </table>
