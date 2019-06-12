@@ -3,6 +3,18 @@ let common = require('../common/common')
 const Op = models.Op;
 const sequelize = models.sequelize;
 let card = {
+    async lists(req) {
+        var pageSize = parseInt(req.params.pageSize) || 1;
+        var pageNum = parseInt(req.params.pageNum) || 10;
+        var sql = `SELECT card.*, u.nick_name, u.avatar_url from card INNER JOIN user as u on card.uid = u.id where card.open = '1'  ORDER BY card.ctime DESC limit ${pageSize} offset ${(pageNum - 1) * pageSize}` ;
+        let data = await sequelize.query(sql, {raw: false});
+        console.log(data)
+        return {
+            code: 1,
+            data: data,
+            msg: '查询成功'
+        }
+    },
     async list(req) {
         let uid = req.query.uid;
         var pageSize = parseInt(req.params.pageSize) || 1;

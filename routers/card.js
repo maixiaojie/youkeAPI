@@ -2,6 +2,15 @@ let controller = require('../controllers')
 const Joi = require('joi')
 
 module.exports = [{
+    path: '/card/lists/{pageNum}/{pageSize}',
+    method: 'GET',
+    config: {
+        description: '签到广场',
+        notes: 'card list',
+        tags: ['card']
+    },
+    handler: controller.card.lists
+},{
     path: '/card/list/{pageNum}/{pageSize}',
     method: 'GET',
     config: {
