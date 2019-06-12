@@ -150,4 +150,12 @@
             <th></th>
             <th><a href="https://api.mcust.cn/card/todaytotal">打卡总人数</a></th>
         </tr>
+        <tr>
+            <th>14</th>
+            <th>/card/lists/{pageNum}/{pageSize}</th>
+            <th>get</th>
+            <th>签到广场数据</th>
+            <th></th>
+            <th><a href="https://api.mcust.cn/card/lists/1/5">签到广场数据</a></th>
+        </tr>
     </table>
