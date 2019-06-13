@@ -158,4 +158,28 @@
             <th></th>
             <th><a href="https://api.mcust.cn/card/lists/1/5">签到广场数据</a></th>
         </tr>
+        <tr>
+            <th>15</th>
+            <th>/task/add</th>
+            <th>post</th>
+            <th>创建任务</th>
+            <th>{title, content, icon, uid}</th>
+            <th><a href="https://api.mcust.cn/task/add">创建任务</a></th>
+        </tr>
+        <tr>
+            <th>16</th>
+            <th>/task/list</th>
+            <th>get</th>
+            <th>某个用户的任务列表</th>
+            <th>uid</th>
+            <th><a href="https://api.mcust.cn/task/list?uid=1">任务列表</a></th>
+        </tr>
+        <tr>
+            <th>17</th>
+            <th>/task/delete</th>
+            <th>get</th>
+            <th>删除某个用户的任务</th>
+            <th>uid, tid</th>
+            <th><a href="https://api.mcust.cn/task/delete?uid=1&tid=1">删除任务</a></th>
+        </tr>
     </table>
