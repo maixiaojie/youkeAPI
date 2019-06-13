@@ -25,8 +25,10 @@ let card = {
             where: {
                 uid
             },
+            order: [['ctime', 'DESC']],
             limit: pageSize,
-            offset: (pageNum - 1) * pageSize
+            offset: (pageNum - 1) * pageSize,
+            
         });
         let total = await models.card.findAll({
             attributes: [[sequelize.fn('COUNT', sequelize.col('cardid')), 'cardTotal']],
