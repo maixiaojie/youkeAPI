@@ -1,3 +1,4 @@
+let moment = require('moment')
 module.exports = function(sequelize, DataTypes) {
 	var card = sequelize.define("card", {
 		cardid: {
@@ -8,7 +9,12 @@ module.exports = function(sequelize, DataTypes) {
 		title: DataTypes.STRING,
 		content: DataTypes.STRING,
 		open: DataTypes.BLOB,
-		ctime: DataTypes.STRING
+		ctime: {
+			type: DataTypes.DATE,
+			get() {
+				return moment(this.getDataValue('ctime')).format('YYYY-MM-DD HH:mm:ss')
+			}
+		}
 	}, {
 		freezeTableName: true,
 		timestamps: false
