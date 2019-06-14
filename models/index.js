@@ -14,7 +14,8 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 		min: 0,
 		acquire: 30000,
 		idle: 10000
-	}
+	},
+	timezone: '+08:00' //东八时区
 })
 
 fs.readdirSync(__dirname).filter((file) => {
