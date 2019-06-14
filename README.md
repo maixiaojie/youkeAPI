@@ -39,12 +39,12 @@
 
 <table>
         <tr>
-            <th>序号</th>
-            <th>接口url</th>
-            <th>请求方式</th>
-            <th>描述</th>
-            <th>其他</th>
-            <th>线上示例</th>
+            <th width="8%">序号</th>
+            <th width="">接口url</th>
+            <th width="15%">请求方式</th>
+            <th width="30%">描述</th>
+            <th width="20%">其他</th>
+            <th width="20%">线上示例</th>
         </tr>
         <tr>
             <th>1</th>
@@ -181,5 +181,21 @@
             <th>删除某个用户的任务</th>
             <th>uid, tid</th>
             <th><a href="https://api.mcust.cn/task/delete?uid=1&tid=1">删除任务</a></th>
+        </tr>
+        <tr>
+            <th>18</th>
+            <th>/task/todo</th>
+            <th>get</th>
+            <th>获取某个用户的任务列表</th>
+            <th>uid</th>
+            <th><a href="https://api.mcust.cn/task/todo?uid=1">获取任务</a></th>
+        </tr>
+        <tr>
+            <th>19</th>
+            <th>/task/complete</th>
+            <th>get</th>
+            <th>完成某个任务</th>
+            <th>uid, tid</th>
+            <th><a href="https://api.mcust.cn/task/complete?uid=1&tid=1">完成任务</a></th>
         </tr>
     </table>

@@ -80,6 +80,66 @@ let task = {
                 data: null,
                 msg: '创建失败'
             }
+        } 
+    },
+    async completeTask(req) {
+        let id = 'tasklog' + common.uuid(57);
+        let uid = req.query.uid;
+        let tid = req.query.tid;
+        let res = await models.task_log.findOne({
+            where: {
+                uid,
+                tid,
+                where: sequelize.where(sequelize.fn('to_days', sequelize.col('ctime')), sequelize.fn('to_days', new Date()))
+            }
+        })
+        if(res == null) {
+            // 今天没有完成过该任务
+            let data = await models.task_log.create({
+                id,
+                uid,
+                tid
+            })
+            return {
+                code: 1,
+                data: data,
+                msg: '创建成功'
+            }
+        }else {
+            return {
+                code: 0,
+                data: null,
+                msg: '你今天已经完成该任务了'
+            }
+        }
+    },
+    async myTaskList(req) {
+        let uid = req.query.uid;
+        let tasks = await models.task.findAll({
+            where: {
+                uid,
+                is_active: '1'
+            }
+        })
+        if(tasks.length == 0) {
+            return {
+                code: 0,
+                data: tasks,
+                msg: '您还没有任务，快去创建吧'
+            }
+        }else {
+            let logs = await models.task_log.findAll({
+                where: {
+                    uid,
+                    where: sequelize.where(sequelize.fn('to_days', sequelize.col('ctime')), sequelize.fn('to_days', new Date()))
+                }
+            })
+            let res = common.isExistIn(tasks, logs);
+            return {
+                code: 1,
+                data: res,
+                msg: '查询成功'
+            }
         }
         
     }

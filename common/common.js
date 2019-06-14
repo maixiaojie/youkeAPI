@@ -24,6 +24,18 @@ var common = {
             }
         }
         return uuid.join('');
+    },
+    isExistIn(arr1, arr2) {
+        var tids = arr2.map( item => item.tid);
+        var arr = JSON.parse(JSON.stringify(arr1));
+        for(var i = 0; i < arr.length; i++) {
+            if(tids.includes(arr[i].id)) {
+                arr[i].completed = 1;
+            }else {
+                arr[i].completed = 0;
+            }
+        }
+        return arr;
     }
 }
 

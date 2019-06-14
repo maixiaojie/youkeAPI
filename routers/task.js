@@ -39,4 +39,33 @@ module.exports = [{
         tags: ['task']
     },
     handler: controller.task.add
+},{
+    path: '/task/complete',
+    method: 'GET',
+    config: {
+        description: '完成某个任务',
+        notes: 'task complete',
+        tags: ['task'],
+        validate: {
+            query: {
+                uid: Joi.string().required(),
+                tid: Joi.string().required()
+            }
+        },
+    },
+    handler: controller.task.completeTask
+},{
+    path: '/task/todo',
+    method: 'GET',
+    config: {
+        description: '今天的任务列表',
+        notes: 'task todo',
+        tags: ['task'],
+        validate: {
+            query: {
+                uid: Joi.string().required()
+            }
+        },
+    },
+    handler: controller.task.myTaskList
 }]
