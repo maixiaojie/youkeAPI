@@ -48,7 +48,7 @@ let card = {
         let hasCardTody = await models.card.findOne({
             where: {
                 uid, 
-                where: sequelize.where(sequelize.fn('to_days', sequelize.col('ctime')), sequelize.fn('to_days', new Date()))
+                where: sequelize.where(sequelize.fn('to_days', sequelize.col('ctime')), sequelize.fn('to_days', new Date().toLocaleString()))
             }
         });
         return {
@@ -61,7 +61,7 @@ let card = {
         let data = await models.card.findAll({
             attributes: [[sequelize.fn('COUNT', sequelize.col('cardid')), 'cardTotal']],
             where: {               
-                where: sequelize.where(sequelize.fn('to_days', sequelize.col('ctime')), sequelize.fn('to_days', new Date()))
+                where: sequelize.where(sequelize.fn('to_days', sequelize.col('ctime')), sequelize.fn('to_days', new Date().toLocaleString()))
             }
         });
         return {
@@ -80,7 +80,7 @@ let card = {
         let hasCardTody = await models.card.findOne({
             where: {
                 uid, 
-                where: sequelize.where(sequelize.fn('to_days', sequelize.col('ctime')), sequelize.fn('to_days', new Date()))
+                where: sequelize.where(sequelize.fn('to_days', sequelize.col('ctime')), sequelize.fn('to_days', new Date().toLocaleString()))
             }
         });
         if(hasCardTody == null) {

@@ -90,7 +90,7 @@ let task = {
             where: {
                 uid,
                 tid,
-                where: sequelize.where(sequelize.fn('to_days', sequelize.col('ctime')), sequelize.fn('to_days', new Date()))
+                where: sequelize.where(sequelize.fn('to_days', sequelize.col('ctime')), sequelize.fn('to_days', new Date().toLocaleString()))
             }
         })
         if(res == null) {
@@ -131,7 +131,7 @@ let task = {
             let logs = await models.task_log.findAll({
                 where: {
                     uid,
-                    where: sequelize.where(sequelize.fn('to_days', sequelize.col('ctime')), sequelize.fn('to_days', new Date()))
+                    where: sequelize.where(sequelize.fn('to_days', sequelize.col('ctime')), sequelize.fn('to_days', new Date().toLocaleString()))
                 }
             })
             let res = common.isExistIn(tasks, logs);
