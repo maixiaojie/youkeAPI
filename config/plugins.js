@@ -70,5 +70,9 @@ module.exports = [
     {
         plugin: require('hapi-cron'),
         options: cronOptions
+    },
+    {
+        plugin: require('hapio'),
+        options: {}
     }
 ]

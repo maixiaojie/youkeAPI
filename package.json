@@ -20,6 +20,7 @@
     "hapi-cron": "^1.0.5",
     "hapi-router": "^4.0.0",
     "hapi-swagger": "^9.3.1",
+    "hapio": "^2.0.0",
     "inert": "^5.1.2",
     "joi": "^14.3.1",
     "moment": "^2.24.0",
