@@ -29,7 +29,7 @@ var socket = {
     listener(socket) {
         var that = this;
         socket.on('msg', function(data) {
-            console.log(data)
+            console.log(data.name +':'+data.msg);
             // socket.broadcast.emit('msgs', data);
             that.io.emit('msgs', data)
         })
@@ -44,7 +44,7 @@ var socket = {
             let leaveUser = that.userList.filter(item => item.socketid == socketid);
             common.removeByValue(that.userList, 'socketid', socketid)
             console.log(`${socket.id} connected`);
-            socket.broadcast.emit('leaveroom', {total: that.total, leaveUser, userList: that.userList});
+            socket.broadcast.emit('leaveroom', {total: that.total, leaveUser: leaveUser[0], userList: that.userList});
         })
     }
 }
