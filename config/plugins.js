@@ -73,6 +73,8 @@ module.exports = [
     },
     {
         plugin: require('hapio'),
-        options: {}
+        options: {
+            origins: '*:*'
+        }
     }
 ]
