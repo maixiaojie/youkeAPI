@@ -74,7 +74,7 @@ module.exports = [
     {
         plugin: require('hapio'),
         options: {
-            origins: '*:*'
+            origins: '*'
         }
     }
 ]

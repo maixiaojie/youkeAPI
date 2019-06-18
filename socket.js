@@ -3,6 +3,8 @@ var socket = {
     init(io) {
         var that = this;
         that.io = io;
+        io.set('transports', ['websocket', 'xhr-polling', 'jsonp-polling', 'htmlfile', 'flashsocket']);
+        io.set('origins', '*:*');
         that.io.on('connection', (socket) => {
             console.log(`${socket.id} connected`);
             that.total++;
