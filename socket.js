@@ -1,4 +1,5 @@
 const common = require('./common/common')
+let models = require('./models');
 var socket = {
     total: 0,
     userList: [],
@@ -26,16 +27,30 @@ var socket = {
             that.listener(socket);
         })
     },
+    async saveMsg(data) {
+        let res = await models.chat_msg.create(data);
+    },
     listener(socket) {
         var that = this;
         socket.on('msg', function(data) {
+            data.id = 'msg' + common.uuid(61);;
             console.log(data.name +':'+data.msg);
             // socket.broadcast.emit('msgs', data);
-            that.io.emit('msgs', data)
+            that.io.emit('msgs', data);
+            try {
+                that.saveMsg(data);
+            }catch(e) {
+                console.log(e);
+            }
+            
+            
         })
         socket.on('login', function(data) {
             data.socketid = socket.id;
-            that.userList.push(data)
+            var isExist = that.userList.some(item => item.userid == data.userid );
+            if(!isExist) {
+                that.userList.push(data);
+            }            
             socket.broadcast.emit('total', {total: that.total, newUser: data, userList: that.userList});
         })
         socket.on('disconnect', function() {
