@@ -198,4 +198,12 @@
             <th>uid, tid</th>
             <th><a href="https://api.mcust.cn/task/complete?uid=1&tid=1">完成任务</a></th>
         </tr>
+        <tr>
+            <th>19</th>
+            <th>/chatmsg/list/{pageNum}/{pageSize}</th>
+            <th>get</th>
+            <th>获取最新的消息列表</th>
+            <th>{pageNum}/{pageSize}</th>
+            <th><a href="https://api.mcust.cn/chatmsg/list/1/10">消息列表</a></th>
+        </tr>
     </table>
