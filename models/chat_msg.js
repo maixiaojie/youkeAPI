@@ -1,3 +1,4 @@
+let moment = require('moment')
 module.exports = function(sequelize, DataTypes) {
 	var chat_msg = sequelize.define("chat_msg", {
 		id: {
@@ -9,7 +10,12 @@ module.exports = function(sequelize, DataTypes) {
 		avatar: DataTypes.STRING,
 		msg: DataTypes.STRING,
 		type: DataTypes.STRING,
-		time: DataTypes.DATE
+		ctime: {
+			type: DataTypes.DATE,
+			get() {
+				return moment(this.getDataValue('ctime')).format('YYYY-MM-DD HH:mm:ss')
+			}
+		}
 	}, {
 		freezeTableName: true,
 		timestamps: false
