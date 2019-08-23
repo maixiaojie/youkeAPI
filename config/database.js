@@ -8,6 +8,6 @@ const config = {
 	host: '106.12.202.229',
 	database: 'custblog',
 	username: 'root',
-	password: '123456'
+	password: 'wenyujie@123'
 }
 module.exports = config;
